@@ -1,5 +1,5 @@
-#ifndef SLAMMANAGER_H_
-#define SLAMMANAGER_H_
+#ifndef LOCALIZATATIONMANAGER_H_
+#define LOCALIZATATIONMANAGER_H_
 
 #define BELIEF_MIN_THRESHOLD 0.25
 #define BELIEF_MAX_THRESHOLD 0.8
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class SlamManager {
+class LocalizationManager {
 private:
 	Particle* _particles[MAX_PARTICLES_NUM];
 	int _numOfParticles;
@@ -18,9 +18,9 @@ private:
 	bool addParticle(Particle* par);
 	bool deleteParticle(int index);
 public:
-	SlamManager(Robot* robot): _robot(robot), _numOfParticles(0){}
-	virtual ~SlamManager();
+	LocalizationManager(Robot* robot): _robot(robot), _numOfParticles(0){};
+	virtual ~LocalizationManager();
 	void update(double deltaX, double deltaY, double deltaYaw);
 };
 
-#endif /* SLAMMANAGER_H_ */
+#endif /* LOCALIZATATIONMANAGER_H_ */

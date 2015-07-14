@@ -3,7 +3,7 @@
 #include "Plans/Plan.h"
 #include "Behaviors/Behavior.h"
 #include "Robot.h"
-#include "SLAM/SlamManager.h"
+#include "SLAM/LocalizationManager.h"
 
 // Noise to simulate real world wrong reads.
 #define NOISE_POSITION_FACTOR 0.02
@@ -13,7 +13,7 @@ class Manager {
 	Robot* _robot;
 	Plan* _plan;
 	Behavior* _currBehavior;
-	SlamManager _slamManager;
+	LocalizationManager _localizationManager;
 public:
 	Manager(Robot* robot, Plan* plan);
 	virtual ~Manager();

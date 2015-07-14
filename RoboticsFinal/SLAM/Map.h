@@ -17,6 +17,7 @@ public:
 	void setMapValue(double x, double y, char value);
 	void printMap();
 	char getMapValueFromRealLocation(double x, double y);
+	void CreateMap(char* filePath);
 };
 
 #endif

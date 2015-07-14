@@ -16,7 +16,7 @@ Manager.d: ../Manager.cpp ../Manager.h ../Plans/Plan.h \
  ../Plans/../Behaviors/../SLAM/Map.h \
  ../Plans/../Behaviors/../SLAM/../Constants.h \
  ../Plans/../Behaviors/../Constants.h ../Behaviors/Behavior.h ../Robot.h \
- ../SLAM/SlamManager.h ../SLAM/Particle.h ../SLAM/../Constants.h \
+ ../SLAM/LocalizationManager.h ../SLAM/Particle.h ../SLAM/../Constants.h \
  ../SLAM/../Robot.h ../SLAM/Map.h
 
 ../Manager.h:
@@ -63,7 +63,7 @@ Manager.d: ../Manager.cpp ../Manager.h ../Plans/Plan.h \
 
 ../Robot.h:
 
-../SLAM/SlamManager.h:
+../SLAM/LocalizationManager.h:
 
 ../SLAM/Particle.h:
 

@@ -1,7 +1,7 @@
 #include "Manager.h"
 #include <math.h>
 
-Manager::Manager(Robot* robot, Plan* plan) : _slamManager(robot)
+Manager::Manager(Robot* robot, Plan* plan) : _localizationManager(robot)
 {
 	_robot = robot;
 	_plan = plan;
@@ -38,7 +38,7 @@ void Manager::run()
 			cout << "Robot's position: " << newX << ", " << newY << ", " << newYaw << endl;
 
 			// Update particles and printing the map
-			_slamManager.update(newX - prevX, newY - prevY, newYaw - prevYaw);
+			_localizationManager.update(newX - prevX, newY - prevY, newYaw - prevYaw);
 
 			prevX = newX;
 			prevY = newY;

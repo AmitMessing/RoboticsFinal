@@ -27,6 +27,11 @@ Map::Map(Map* mapToCopy)
 	}
 }
 
+void CreateMap(char* filePath)
+{
+
+}
+
 void Map::setMapValue(double x, double y, char value)
 {
 	int col = getColFromXPos(x);

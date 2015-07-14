@@ -15,11 +15,12 @@ main.d: ../main.cpp \
  ../SLAM/../Constants.h ../Manager.h ../Plans/Plan.h \
  ../Plans/../Behaviors/Behavior.h ../Plans/../Behaviors/../Robot.h \
  ../Plans/../Behaviors/../SLAM/Map.h ../Plans/../Behaviors/../Constants.h \
- ../Behaviors/Behavior.h ../Robot.h ../SLAM/SlamManager.h \
+ ../Behaviors/Behavior.h ../Robot.h ../SLAM/LocalizationManager.h \
  ../SLAM/Particle.h ../SLAM/../Robot.h ../SLAM/Map.h \
  ../Plans/AvoidObstaclesPlan.h ../Plans/Plan.h \
  ../Plans/../Behaviors/MoveForward.h ../Plans/../Behaviors/Behavior.h \
- ../Plans/../Behaviors/TurnLeft.h ../Plans/../Behaviors/TurnRight.h
+ ../Plans/../Behaviors/TurnLeft.h ../Plans/../Behaviors/TurnRight.h \
+ ../Png/PngUtil.h
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
 
@@ -67,7 +68,7 @@ main.d: ../main.cpp \
 
 ../Robot.h:
 
-../SLAM/SlamManager.h:
+../SLAM/LocalizationManager.h:
 
 ../SLAM/Particle.h:
 
@@ -86,3 +87,5 @@ main.d: ../main.cpp \
 ../Plans/../Behaviors/TurnLeft.h:
 
 ../Plans/../Behaviors/TurnRight.h:
+
+../Png/PngUtil.h:

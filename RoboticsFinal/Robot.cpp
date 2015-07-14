@@ -16,6 +16,7 @@ void Robot::Read()
 void Robot::setSpeed(double forwardSpeed, double rotationSpeed)
 {
 	_pp.SetSpeed(forwardSpeed,rotationSpeed);
+	_pp.SetMotorEnable(true);
 }
 
 double Robot::getXPos()

@@ -4,19 +4,22 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../SLAM/LocalizationManager.cpp \
 ../SLAM/Map.cpp \
-../SLAM/Particle.cpp \
-../SLAM/SlamManager.cpp 
+../SLAM/MapUtilities.cpp \
+../SLAM/Particle.cpp 
 
 OBJS += \
+./SLAM/LocalizationManager.o \
 ./SLAM/Map.o \
-./SLAM/Particle.o \
-./SLAM/SlamManager.o 
+./SLAM/MapUtilities.o \
+./SLAM/Particle.o 
 
 CPP_DEPS += \
+./SLAM/LocalizationManager.d \
 ./SLAM/Map.d \
-./SLAM/Particle.d \
-./SLAM/SlamManager.d 
+./SLAM/MapUtilities.d \
+./SLAM/Particle.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

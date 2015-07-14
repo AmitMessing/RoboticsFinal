@@ -1,8 +1,8 @@
-#include "SlamManager.h"
+#include "LocalizationManager.h"
 
 using namespace std;
 
-void SlamManager::update(double deltaX, double deltaY, double deltaYaw)
+void LocalizationManager::update(double deltaX, double deltaY, double deltaYaw)
 {
 	double bestBelief = 0;
 	Particle* bestParticle;
@@ -68,7 +68,7 @@ void SlamManager::update(double deltaX, double deltaY, double deltaYaw)
 	bestParticle->getMap()->printMap();
 }
 
-bool SlamManager::addParticle(Particle* particle)
+bool LocalizationManager::addParticle(Particle* particle)
 {
 	if (_numOfParticles < MAX_PARTICLES_NUM)
 	{
@@ -80,7 +80,7 @@ bool SlamManager::addParticle(Particle* particle)
 	return false;
 }
 
-bool SlamManager::deleteParticle(int index)
+bool LocalizationManager::deleteParticle(int index)
 {
 	if (_numOfParticles > 0)
 	{
@@ -93,6 +93,6 @@ bool SlamManager::deleteParticle(int index)
 	return false;
 }
 
-SlamManager::~SlamManager() {
+LocalizationManager::~LocalizationManager() {
 	delete[] _particles;
 }
