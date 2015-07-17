@@ -13,6 +13,7 @@ private:
 	char _mapMatrix[MAP_SIZE][MAP_SIZE];
 public:
 	Map();
+	virtual ~Map();
 	Map(Map* mapToCopy);
 	void setMapValue(double x, double y, char value);
 	void printMap();

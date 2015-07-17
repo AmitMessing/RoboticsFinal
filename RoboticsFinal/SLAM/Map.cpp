@@ -27,9 +27,12 @@ Map::Map(Map* mapToCopy)
 	}
 }
 
+Map::~Map()
+{
+}
+
 void CreateMap(char* filePath)
 {
-
 }
 
 void Map::setMapValue(double x, double y, char value)
