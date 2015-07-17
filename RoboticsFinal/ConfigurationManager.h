@@ -14,7 +14,7 @@ class ConfigurationManager {
 public:
 	virtual ~ConfigurationManager();
 
-	static const char* GetMapFilename();
+	static const char* GetMapFilePath();
 	static const double GetCentimetersPerPixel();
 	static const int GetGridCentimetersSize();
 	static const Location GetStartLocation();
@@ -31,5 +31,17 @@ private:
 		static const double robot_size =  30.0;
 		static const int cells_per_waypoint_ = 5;
 };
+
+inline const Location ConfigurationManager::GetStartLocation() {
+	return start_location_;
+}
+
+inline const Point ConfigurationManager::GetEndLocation() {
+	return end_location_;
+}
+
+inline const char* ConfigurationManager::GetMapFilePath() {
+	return map_file_path_;
+}
 
 #endif /* CONFIGURATIONMANAGER_H_ */

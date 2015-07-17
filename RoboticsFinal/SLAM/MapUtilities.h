@@ -7,6 +7,12 @@
 
 #ifndef MAPUTILITIES_H_
 #define MAPUTILITIES_H_
+#include <cstdlib>
+#include <cmath>
+#include <vector>
+
+#include "../Constants.h"
+#include "../Png/LoadPng.h"
 
 using std::vector;
 
