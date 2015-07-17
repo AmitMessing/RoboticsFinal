@@ -67,21 +67,21 @@ struct Location {
                yaw_ = a.yaw_;
            }
 
-    namespace GridCellState {
-    enum CellState {
-    	FREE,
-    	OBSTACLE,
-    	A_STAR_PATH,
-    	WAY_POINT,
-    	BLOWED
-    };
-    }
+};
 
-    struct GridCell {
-    	GridCellState::CellState cell_state : 3;
-    	unsigned int cell_cost : 5;
-    };
+namespace GridCellState {
+enum CellState {
+	FREE,
+	OBSTACLE,
+	A_STAR_PATH,
+	WAY_POINT,
+	BLOWED
+};
+}
 
+struct GridCell {
+	GridCellState::CellState cell_state : 3;
+	unsigned int cell_cost : 5;
 };
 
 #endif /* CONSTANTS_H_ */

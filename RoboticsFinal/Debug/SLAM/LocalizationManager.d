@@ -1,5 +1,6 @@
-Behaviors/Behavior.d: ../Behaviors/Behavior.cpp ../Behaviors/Behavior.h \
- ../Behaviors/../Robot.h \
+SLAM/LocalizationManager.d: ../SLAM/LocalizationManager.cpp \
+ ../SLAM/LocalizationManager.h ../SLAM/Particle.h ../SLAM/../Constants.h \
+ ../SLAM/../Robot.h \
  /usr/local/include/player-2.0/libplayerc++/playerc++.h \
  /usr/local/include/player-2.0/libplayerc/playerc.h \
  /usr/local/include/player-2.0/libplayercore/player.h \
@@ -13,12 +14,15 @@ Behaviors/Behavior.d: ../Behaviors/Behavior.cpp ../Behaviors/Behavior.h \
  /usr/local/include/player-2.0/libplayerc++/playerclient.h \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
- ../Behaviors/../SLAM/Map.h ../Behaviors/../SLAM/../Constants.h \
- ../Behaviors/../Constants.h
+ ../SLAM/../SLAM/Map.h ../SLAM/../SLAM/../Constants.h ../SLAM/Map.h
 
-../Behaviors/Behavior.h:
+../SLAM/LocalizationManager.h:
 
-../Behaviors/../Robot.h:
+../SLAM/Particle.h:
+
+../SLAM/../Constants.h:
+
+../SLAM/../Robot.h:
 
 /usr/local/include/player-2.0/libplayerc++/playerc++.h:
 
@@ -46,8 +50,8 @@ Behaviors/Behavior.d: ../Behaviors/Behavior.cpp ../Behaviors/Behavior.h \
 
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
-../Behaviors/../SLAM/Map.h:
+../SLAM/../SLAM/Map.h:
 
-../Behaviors/../SLAM/../Constants.h:
+../SLAM/../SLAM/../Constants.h:
 
-../Behaviors/../Constants.h:
+../SLAM/Map.h:
