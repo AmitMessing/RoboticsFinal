@@ -6,18 +6,21 @@
 CPP_SRCS += \
 ../ConfigurationManager.cpp \
 ../Manager.cpp \
+../PathPlanner.cpp \
 ../Robot.cpp \
 ../main.cpp 
 
 OBJS += \
 ./ConfigurationManager.o \
 ./Manager.o \
+./PathPlanner.o \
 ./Robot.o \
 ./main.o 
 
 CPP_DEPS += \
 ./ConfigurationManager.d \
 ./Manager.d \
+./PathPlanner.d \
 ./Robot.d \
 ./main.d 
 

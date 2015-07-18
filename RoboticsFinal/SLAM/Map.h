@@ -4,6 +4,7 @@
 #include "../ConfigurationManager.h"
 #include "../Constants.h"
 #include <vector>
+#include "../PathPlanner.h"
 
 using namespace std;
 

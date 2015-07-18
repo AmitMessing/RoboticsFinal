@@ -148,6 +148,35 @@ void Map::BlowMap(int blowFactor){
 	}
 
 	lodepng::encode("/home/colman/Desktop/blowedMapFromGrid.png", temp, this->_gridWidth, this->_gridHeight);
+
+	PathPlanner pp = PathPlanner(this->_grid, this->_gridHeight, this->_gridWidth);
+	Point startLoc = Point(
+			ConfigurationManager::GetStartLocation().x,
+			ConfigurationManager::GetStartLocation().y);
+	vector<Point> path = pp.AStar(startLoc,ConfigurationManager::GetGoal());
+
+	for (unsigned int index = 0; index < path.size(); index++){
+		this->_grid[path[index].y][path[index].x] = 127;
+	}
+
+	vector<unsigned char> temp2;
+
+	for (int row = 0; row < this->_gridHeight; row++){
+		for (int col = 0; col < this->_gridWidth; col++){
+			if (this->_grid[row][col] == OCCUPIED_CELL){
+				temp2.push_back(0);
+			}
+			else if (this->_grid[row][col] == 127)
+			{
+				temp2.push_back(127);
+			}
+			else{
+				temp2.push_back(255);
+			}
+		}
+	}
+
+	lodepng::encode("/home/colman/Desktop/blowedMapFromGridWithPath.png", temp2, this->_gridWidth, this->_gridHeight);
 }
 
 unsigned int Map::GetPositionInMapVector(unsigned width, unsigned row, unsigned col){

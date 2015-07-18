@@ -10,12 +10,23 @@ using namespace std;
 #define UNKNOWN_CELL '?'
 #define MAX_LASER_INDEX 665
 
-struct Point {
-	unsigned int x_; // Rows = Heights
-	unsigned int y_; // Cols = Width
+class Point {
+public:
+	unsigned int x; // Rows = Heights
+	unsigned int y; // Cols = Width
+
+	Point(){
+		this->x = 0;
+		this->y = 0;
+	}
+
+	Point(double x, double y){
+		this->x = x;
+		this->y = y;
+	}
 
 	bool operator==(const Point& rhs) const {
-		return ((this->x_ == rhs.x_) && (this->y_ == rhs.y_));
+		return ((this->x == rhs.x) && (this->y == rhs.y));
 	}
 
 	bool operator!=(const Point& rhs) const {
@@ -24,47 +35,47 @@ struct Point {
 
 
 	bool operator<(const Point& rhs) const {
-		return ((this->x_ < rhs.x_) || ((this->x_ == rhs.x_) && (this->y_ < rhs.y_)));
+		return ((this->x < rhs.x) || ((this->x == rhs.x) && (this->y < rhs.y)));
 	}
 
   void Print()
   {
-      cout << "X:" << this->x_ << " Y:" << this->y_ << endl;
+      cout << "X:" << this->x << " Y:" << this->y << endl;
   }
 };
 
 struct Location {
-	float x_;
-        float y_;
-        float yaw_;
+	float x;
+        float y;
+        float yaw;
 
          void Print()
         {
-            cout << "X:" << this->x_ << " Y:" << this->y_ << " YAW:" << this->yaw_ << endl;
+            cout << "X:" << this->x << " Y:" << this->y << " YAW:" << this->yaw << endl;
         }
 
 
     inline Location operator+(Location a) {
-        return {a.x_+x_,a.y_+y_, a.yaw_ + yaw_};
+        return {a.x + x, a.y + y, a.yaw + yaw};
     }
 
     inline Location operator-(Location a) {
-            return {a.x_ - x_,a.y_ - y_, a.yaw_ - yaw_};
+            return {a.x - x,a.y - y, a.yaw - yaw};
         }
 
 
     inline Location operator/(float a) {
-        return {x_/a,y_/a,yaw_/a};
+        return {x/a,y/a,yaw/a};
     }
 
     inline bool operator!=(Location a) {
-           return (!((x_ == a.x_)&&(y_ == a.y_)&&(yaw_ == a.yaw_)));
+           return (!((x == a.x)&&(y == a.y)&&(yaw == a.yaw)));
        }
 
     inline void operator=(Location a) {
-               x_ = a.x_;
-               y_ = a.y_;
-               yaw_ = a.yaw_;
+               x = a.x;
+               y = a.y;
+               yaw = a.yaw;
            }
 
 };
