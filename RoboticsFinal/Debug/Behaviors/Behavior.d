@@ -13,7 +13,9 @@ Behaviors/Behavior.d: ../Behaviors/Behavior.cpp ../Behaviors/Behavior.h \
  /usr/local/include/player-2.0/libplayerc++/playerclient.h \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
- ../Behaviors/../SLAM/Map.h ../Behaviors/../SLAM/../Constants.h \
+ ../Behaviors/../SLAM/Map.h \
+ ../Behaviors/../SLAM/../ConfigurationManager.h \
+ ../Behaviors/../SLAM/../Constants.h ../Behaviors/../SLAM/../Constants.h \
  ../Behaviors/../Constants.h
 
 ../Behaviors/Behavior.h:
@@ -47,6 +49,10 @@ Behaviors/Behavior.d: ../Behaviors/Behavior.cpp ../Behaviors/Behavior.h \
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
 ../Behaviors/../SLAM/Map.h:
+
+../Behaviors/../SLAM/../ConfigurationManager.h:
+
+../Behaviors/../SLAM/../Constants.h:
 
 ../Behaviors/../SLAM/../Constants.h:
 

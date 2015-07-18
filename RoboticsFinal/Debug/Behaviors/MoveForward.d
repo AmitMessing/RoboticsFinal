@@ -14,7 +14,9 @@ Behaviors/MoveForward.d: ../Behaviors/MoveForward.cpp \
  /usr/local/include/player-2.0/libplayerc++/playerclient.h \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
- ../Behaviors/../SLAM/Map.h ../Behaviors/../SLAM/../Constants.h \
+ ../Behaviors/../SLAM/Map.h \
+ ../Behaviors/../SLAM/../ConfigurationManager.h \
+ ../Behaviors/../SLAM/../Constants.h ../Behaviors/../SLAM/../Constants.h \
  ../Behaviors/../Constants.h
 
 ../Behaviors/MoveForward.h:
@@ -50,6 +52,10 @@ Behaviors/MoveForward.d: ../Behaviors/MoveForward.cpp \
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
 ../Behaviors/../SLAM/Map.h:
+
+../Behaviors/../SLAM/../ConfigurationManager.h:
+
+../Behaviors/../SLAM/../Constants.h:
 
 ../Behaviors/../SLAM/../Constants.h:
 

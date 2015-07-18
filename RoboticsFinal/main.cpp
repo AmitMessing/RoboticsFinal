@@ -13,10 +13,7 @@ int main()
 {
 	cout << "Started Running Robot" << endl;
 
-	const char* filePath = ConfigurationManager::GetMapFilePath();
-	const Location start_location = ConfigurationManager::GetStartLocation();
-	const Point end_location = ConfigurationManager::GetEndLocation();
-	Map::CreateMap(filePath);
+	Map map = Map();
 
 //	Robot robot("localhost",6665);
 //	AvoidObstaclesPlan plan(&robot);

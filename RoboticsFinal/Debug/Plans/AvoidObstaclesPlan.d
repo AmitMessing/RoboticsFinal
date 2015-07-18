@@ -15,6 +15,8 @@ Plans/AvoidObstaclesPlan.d: ../Plans/AvoidObstaclesPlan.cpp \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
  ../Plans/../Behaviors/../SLAM/Map.h \
+ ../Plans/../Behaviors/../SLAM/../ConfigurationManager.h \
+ ../Plans/../Behaviors/../SLAM/../Constants.h \
  ../Plans/../Behaviors/../SLAM/../Constants.h \
  ../Plans/../Behaviors/../Constants.h ../Plans/../Behaviors/MoveForward.h \
  ../Plans/../Behaviors/Behavior.h ../Plans/../Behaviors/TurnLeft.h \
@@ -55,6 +57,10 @@ Plans/AvoidObstaclesPlan.d: ../Plans/AvoidObstaclesPlan.cpp \
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
 ../Plans/../Behaviors/../SLAM/Map.h:
+
+../Plans/../Behaviors/../SLAM/../ConfigurationManager.h:
+
+../Plans/../Behaviors/../SLAM/../Constants.h:
 
 ../Plans/../Behaviors/../SLAM/../Constants.h:
 

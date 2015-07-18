@@ -5,7 +5,7 @@
  *      Author: colman
  */
 #include "PngUtil.h"
-#include "LoadPng.h"
+#include "lodepng.h"
 #include <iostream>
 
 

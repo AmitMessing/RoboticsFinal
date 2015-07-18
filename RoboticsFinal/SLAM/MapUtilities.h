@@ -12,7 +12,7 @@
 #include <vector>
 
 #include "../Constants.h"
-#include "../Png/LoadPng.h"
+#include "../Png/lodepng.h"
 
 using std::vector;
 

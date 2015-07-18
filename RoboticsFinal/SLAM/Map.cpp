@@ -2,79 +2,208 @@
 #include <iostream>
 #include <math.h>
 #include "Map.h"
+#include "../Png/lodepng.h"
 
 using namespace std;
 
 Map::Map()
 {
-	for (int i = 0; i < MAP_SIZE; i++)
-	{
-		for (int j = 0; j < MAP_SIZE; j++)
-		{
-			_mapMatrix[i][j] = UNKNOWN_CELL;
+	this->_width = 0;
+	this->_height = 0;
+
+	this->LoadMap();
+
+	this->_gridHeight = (int)(this->_height * ConfigurationManager::GetGridRosolution());
+	this->_gridWidth = (int)(this->_width * ConfigurationManager::GetGridRosolution());
+
+	this->_grid = new int*[this->_gridHeight];
+
+	for (int row = 0; row < this->_gridHeight; row++){
+		this->_grid[row] = new int[this->_gridWidth];
+		for (int col = 0; col < this->_gridWidth; col++){
+			this->_grid[row][col] = FREE_CELL;
 		}
 	}
+
+	this->BlowMap(ConfigurationManager::GetBlowFactor());
 }
 
-Map::Map(Map* mapToCopy)
-{
-	for (int i = 0; i < MAP_SIZE; i++)
-	{
-		for (int j = 0; j < MAP_SIZE; j++)
-		{
-			_mapMatrix[i][j] = mapToCopy->_mapMatrix[i][j];
-		}
-	}
-}
 
 Map::~Map()
 {
 }
 
-void CreateMap(char* filePath)
-{
-}
-
-void Map::setMapValue(double x, double y, char value)
-{
-	int col = getColFromXPos(x);
-	int row = getRowFromYPos(y);
-
-	if (_mapMatrix[row][col] != OCCUPIED_CELL)
-	{
-		_mapMatrix[row][col] = value;
+void Map::LoadMap(){
+	unsigned error = lodepng::decode(this->_image,this->_width, this->_height, ConfigurationManager::GetMapFilePath());
+	if (error){
+		cout << "LoadMap->decode returned an error:" << error << " , " << lodepng_error_text(error);
 	}
 }
 
-void Map::printMap()
-{
-	// Print to console
-	for (int i=MAP_SIZE - 1; i >= 0 ; i--)
+void Map::BlowMap(int blowFactor){
+	vector<unsigned char> blowedMap;
+	for (int index = 0; index < this->_image.size(); index++){
+		blowedMap.push_back(this->_image[index]);
+	}
+
+	for (int row = 0; row < this->_height; row++){
+		for (int col = 0; col < this->_width; col++){
+			if (this->_image[this->GetPositionInMapVector(this->_width,row,col)] == 0){
+				for (int bf = 1; bf < blowFactor + 1; bf++)
+				{
+					// left
+					if (((int)col - bf) >= 0)
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col - bf) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col - bf) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col - bf) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col - bf) + 3] = 255;
+					}
+					// right
+					if (col + bf < this->_width)
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col + bf) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col + bf) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col + bf) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row,col + bf) + 3] = 255;
+					}
+					// up
+					if (((int)row - bf) >= 0)
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col) + 3] = 255;
+					}
+					// down
+					if (row + bf < this->_height)
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col) + 3] = 255;
+					}
+					// diagonal up-right
+					if((row + bf <  this->_height) && (col + bf < this->_width))
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col + bf) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col + bf) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col + bf) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col + bf) + 3] = 255;
+					}
+					// diagonal up-left
+					if((row + bf <  this->_height) && ((col - bf) >= 0))
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col - bf) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col - bf) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col - bf) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row + bf,col - bf) + 3] = 255;
+					}
+
+					// diagonal down-right
+					if(((row - bf) >= 0) && (col + bf <  this->_width))
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col + bf) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col + bf) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col + bf) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col + bf) + 3] = 255;
+					}
+					// diagonal down-left
+					if(((row - bf) >= 0) && ((col - bf) >= 0))
+					{
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col - bf) + 0] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col - bf) + 1] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col - bf) + 2] = 0;
+						blowedMap[this->GetPositionInMapVector(this->_width,row - bf,col - bf) + 3] = 255;
+					}
+				}
+			}
+		}
+	}
+	this->_blowedMap = blowedMap;
+
+	//lodepng::encode("/home/colman/Desktop/blowedMap.png", blowedMap, this->_width, this->_height);
+
+
+	for (int row = 0; row < this->_height; row++){
+		for (int col = 0; col < this->_width; col++){
+			if (this->_blowedMap[this->GetPositionInMapVector(this->_width, row,col)] == 0){
+				this->_grid[row][col] = OCCUPIED_CELL;
+			}
+		}
+	}
+	lodepng::encode("/home/colman/Desktop/blowedMap.png", this->_blowedMap, this->_width, this->_height);
+
+	vector<unsigned char> temp;
+
+	for (int row = 0; row < this->_gridHeight; row++){
+		for (int col = 0; col < this->_gridWidth; col++){
+			if (this->_grid[row][col] == OCCUPIED_CELL){
+				temp.push_back(0);
+			}
+			else{
+				temp.push_back(255);
+			}
+		}
+	}
+
+	lodepng::encode("/home/colman/Desktop/blowedMapFromGrid.png", temp, this->_gridWidth, this->_gridHeight);
+}
+
+unsigned int Map::GetPositionInMapVector(unsigned width, unsigned row, unsigned col){
+	return (width * row * ConfigurationManager::GetResolutionRatio() + col * ConfigurationManager::GetResolutionRatio());
+}
+
+void Map::PrintMap(){
+	for (int row = 0; row < this->_gridHeight; row++)
 	{
-		for (int j=MAP_SIZE - 1; j >= 0; j--)
-		{
-			cout << _mapMatrix[i][j];
+		for (int col = 0; col < this->_gridWidth; col++){
+			cout << (char)this->_grid[row][col];
 		}
 		cout << endl;
 	}
-	cout << endl;
 }
 
-char Map::getMapValueFromRealLocation(double x, double y)
-{
-	int col = getColFromXPos(x);
-	int row = getRowFromYPos(y);
-	return _mapMatrix[row][col];
-}
-
-int Map::getColFromXPos(double x)
-{
-	return (x / RESOLUTION) + (MAP_SIZE / 2);
-}
-
-int Map::getRowFromYPos(double y)
-{
-	return (MAP_SIZE / 2) - (y / RESOLUTION);
-}
-
-
+//void Map::PrintMap()
+//{
+//	cout << "Printing Grid: " << endl;
+//	cout << "--\t";
+//	for (int j = 0; j < this->_gridWidth ; j++)
+//	{
+//		if (j % 5 == 0)
+//		{
+//			cout << "|";
+//		}
+//		else
+//		{
+//			cout << "-";
+//		}
+//	}
+//	cout << endl;
+//	for (int i = 0; i < this->_gridHeight ; i++)
+//	{
+//		cout << i << "\t";
+//		for (int j = 0; j < this->_gridWidth ; j++)
+//		{
+//			switch(this->_grid[i][j])
+//			{
+//			case FREE_CELL:
+//				cout << " ";
+//				break;
+//			case OCCUPIED_CELL:
+//				cout << "*";
+//				break;
+////			case PATH_CELL:
+////				cout << "o";
+////				break;
+////			case START_CELL:
+////				cout << "s";
+////				break;
+////			case GOAL_CELL:
+////				cout << "g";
+////				break;
+//			}
+//		}
+//		cout << endl;
+//	}
+//}

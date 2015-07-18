@@ -1,24 +1,27 @@
 #ifndef MAP_H_
 #define MAP_H_
 
-#define MAP_SIZE 200
-#define RESOLUTION 0.27
-
+#include "../ConfigurationManager.h"
 #include "../Constants.h"
+#include <vector>
+
+using namespace std;
 
 class Map {
 private:
-	int getColFromXPos(double x);
-	int getRowFromYPos(double y);
-	char _mapMatrix[MAP_SIZE][MAP_SIZE];
+	int** _grid;
+	vector<unsigned char> _image;
+	vector<unsigned char> _blowedMap;
+	unsigned _width, _height;
+	int _gridWidth,_gridHeight;
+
 public:
 	Map();
 	virtual ~Map();
-	Map(Map* mapToCopy);
-	void setMapValue(double x, double y, char value);
-	void printMap();
-	char getMapValueFromRealLocation(double x, double y);
-	void CreateMap(char* filePath);
+	void LoadMap();
+	void BlowMap(int blowFactor);
+	unsigned int GetPositionInMapVector(unsigned width, unsigned row, unsigned col);
+	void PrintMap();
 };
 
 #endif
