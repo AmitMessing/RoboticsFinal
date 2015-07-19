@@ -1,10 +1,10 @@
 #ifndef MAP_H_
 #define MAP_H_
 
-#include "../ConfigurationManager.h"
-#include "../Constants.h"
+#include "ConfigurationManager.h"
+#include "Constants.h"
 #include <vector>
-#include "../PathPlanner.h"
+#include "PathPlanner.h"
 
 using namespace std;
 

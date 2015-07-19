@@ -6,7 +6,7 @@
 #define MAX_PARTICLES_NUM 40
 
 #include "Particle.h"
-#include "../Robot.h"
+#include "Robot.h"
 
 using namespace std;
 

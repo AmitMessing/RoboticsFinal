@@ -1,6 +1,6 @@
 #include "Particle.h"
 #include <math.h>
-#include "../ConfigurationManager.h"
+#include "ConfigurationManager.h"
 
 Particle::Particle(double x, double y, double pYaw, double bel, Map* map) : _xPos(x), _yPos(y), _yaw(pYaw), _belief(bel)
 {

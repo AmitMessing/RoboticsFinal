@@ -5,7 +5,10 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../ConfigurationManager.cpp \
+../LocalizationManager.cpp \
 ../Manager.cpp \
+../Map.cpp \
+../Particle.cpp \
 ../PathPlanner.cpp \
 ../Robot.cpp \
 ../WayPointsManager.cpp \
@@ -13,7 +16,10 @@ CPP_SRCS += \
 
 OBJS += \
 ./ConfigurationManager.o \
+./LocalizationManager.o \
 ./Manager.o \
+./Map.o \
+./Particle.o \
 ./PathPlanner.o \
 ./Robot.o \
 ./WayPointsManager.o \
@@ -21,7 +27,10 @@ OBJS += \
 
 CPP_DEPS += \
 ./ConfigurationManager.d \
+./LocalizationManager.d \
 ./Manager.d \
+./Map.d \
+./Particle.d \
 ./PathPlanner.d \
 ./Robot.d \
 ./WayPointsManager.d \

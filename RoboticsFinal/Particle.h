@@ -7,9 +7,9 @@
 #define NEW_PARTICLE_RADIUS 0.2
 #define NEW_PARTICLE_ANGLE_LIMIT 60
 
-#include "../Constants.h"
+#include "Constants.h"
 #include "Particle.h"
-#include "../Robot.h"
+#include "Robot.h"
 #include "Map.h"
 
 class Particle

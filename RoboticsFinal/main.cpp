@@ -1,8 +1,7 @@
 #include <iostream>
 #include <libplayerc++/playerc++.h>
-#include "SLAM/Map.h"
+#include "Map.h"
 #include "Manager.h"
-#include "Plans/AvoidObstaclesPlan.h"
 #include "Png/PngUtil.h"
 #include "ConfigurationManager.h"
 #include "WayPointsManager.h"

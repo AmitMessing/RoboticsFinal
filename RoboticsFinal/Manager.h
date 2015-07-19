@@ -1,10 +1,9 @@
 
 #ifndef MANAGER_H_
 #define MANAGER_H_
-#include "Plans/Plan.h"
 #include "Behaviors/Behavior.h"
 #include "Robot.h"
-#include "SLAM/LocalizationManager.h"
+#include "LocalizationManager.h"
 
 // Noise to simulate real world wrong reads.
 #define NOISE_POSITION_FACTOR 0.02

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include "Map.h"
-#include "../Png/lodepng.h"
+#include "Png/lodepng.h"
 
 using namespace std;
 

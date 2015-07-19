@@ -2,7 +2,7 @@
 #define ROBOT_H_
 #include <iostream>
 #include <libplayerc++/playerc++.h>
-#include "SLAM/Map.h"
+#include "Map.h"
 
 using namespace std;
 using namespace PlayerCc;

@@ -13,11 +13,8 @@ Behaviors/TurnLeft.d: ../Behaviors/TurnLeft.cpp ../Behaviors/TurnLeft.h \
  /usr/local/include/player-2.0/libplayerc++/playerclient.h \
  /usr/local/include/player-2.0/libplayerc++/playererror.h \
  /usr/local/include/player-2.0/libplayerc++/clientproxy.h \
- ../Behaviors/../SLAM/Map.h \
- ../Behaviors/../SLAM/../ConfigurationManager.h \
- ../Behaviors/../SLAM/../Constants.h ../Behaviors/../SLAM/../Constants.h \
- ../Behaviors/../SLAM/../PathPlanner.h \
- ../Behaviors/../SLAM/../ConfigurationManager.h \
+ ../Behaviors/../Map.h ../Behaviors/../ConfigurationManager.h \
+ ../Behaviors/../Constants.h ../Behaviors/../PathPlanner.h \
  ../Behaviors/../Constants.h
 
 ../Behaviors/TurnLeft.h:
@@ -52,16 +49,12 @@ Behaviors/TurnLeft.d: ../Behaviors/TurnLeft.cpp ../Behaviors/TurnLeft.h \
 
 /usr/local/include/player-2.0/libplayerc++/clientproxy.h:
 
-../Behaviors/../SLAM/Map.h:
+../Behaviors/../Map.h:
 
-../Behaviors/../SLAM/../ConfigurationManager.h:
+../Behaviors/../ConfigurationManager.h:
 
-../Behaviors/../SLAM/../Constants.h:
+../Behaviors/../Constants.h:
 
-../Behaviors/../SLAM/../Constants.h:
-
-../Behaviors/../SLAM/../PathPlanner.h:
-
-../Behaviors/../SLAM/../ConfigurationManager.h:
+../Behaviors/../PathPlanner.h:
 
 ../Behaviors/../Constants.h:
