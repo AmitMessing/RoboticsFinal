@@ -1,3 +1,5 @@
+
+
 #include "Behavior.h"
 
 bool Behavior::addNextBehavior(Behavior* behaviorToAdd)

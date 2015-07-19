@@ -1,9 +1,3 @@
-/*
- * PathPlanner.cpp
- *
- *  Created on: Jul 18, 2015
- *      Author: colman
- */
 
 #include "PathPlanner.h"
 

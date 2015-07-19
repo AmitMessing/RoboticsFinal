@@ -1,9 +1,4 @@
-/*
- * WayPointsManager.cpp
- *
- *  Created on: Jul 19, 2015
- *      Author: colman
- */
+
 
 #include "WayPointsManager.h"
 #include <vector>
@@ -22,9 +17,9 @@ WayPointsManager::~WayPointsManager() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<Location> WayPointsManager::GetWayPoints(vector<Point> path){
+vector<Location> WayPointsManager::GetWayPoints(vector<Point>* path){
 
-	this->_path = path;
+	this->_path = path[0];
 	vector<Location> result;
 
 	int direction = GetNextDirection();
@@ -33,7 +28,8 @@ vector<Location> WayPointsManager::GetWayPoints(vector<Point> path){
 		{
 			if (direction != MOVE_FORWARD)
 			{
-				result.push_back(this->GetRealLocation(this->_path[this->_currPoint - 1]));
+				Point p = this->_path[this->_currPoint - 1];
+				result.push_back(this->GetRealLocation(p));
 			}
 
 			direction = GetNextDirection();

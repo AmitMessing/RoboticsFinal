@@ -34,6 +34,10 @@ double Robot::getYaw()
 	return _pp.GetYaw();
 }
 
+Location Robot::GetLocation(){
+	return Location(_pp.GetXPos(), _pp.GetYPos(), _pp.GetYaw());
+}
+
 Robot::~Robot()
 {
 	delete &_pc;

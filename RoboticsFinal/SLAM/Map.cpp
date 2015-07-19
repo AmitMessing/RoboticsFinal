@@ -149,6 +149,7 @@ vector<Point> Map::GetAStartPath()
 		}
 
 		this->PrintMap();
+		return path;
 }
 
 unsigned int Map::GetPositionInMapVector(unsigned width, unsigned row, unsigned col){

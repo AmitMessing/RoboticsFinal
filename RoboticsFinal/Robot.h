@@ -13,7 +13,8 @@ private:
 	Position2dProxy _pp;
 	LaserProxy _lp;
 public:
-	Robot(char* host, int port):_pc(host,port), _pp(&_pc),_lp(&_pc){}
+	Robot(char* host, int port):_pc(host,port), _pp(&_pc),_lp(&_pc){
+	}
 	virtual ~Robot();
 	double getLaserScan(int index);
 	void Read();
@@ -21,6 +22,7 @@ public:
 	double getXPos();
 	double getYPos();
 	double getYaw();
+	Location GetLocation();
 };
 
 #endif /* ROBOT_H_ */

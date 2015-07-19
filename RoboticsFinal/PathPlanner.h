@@ -1,9 +1,4 @@
-/*
- * PathPlanner.h
- *
- *  Created on: Jul 18, 2015
- *      Author: colman
- */
+
 
 #ifndef PATHPLANNER_H_
 #define PATHPLANNER_H_

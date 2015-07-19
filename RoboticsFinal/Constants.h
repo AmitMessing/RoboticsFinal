@@ -23,6 +23,22 @@ using namespace std;
 #define DOWN_RIGHT 8
 #define STOP 9
 
+// movement
+#define ROTATION_SPEED 0.02
+#define FORWARD_SPEED_SLOW 0.2
+#define FORWARD_SPEED 0.4
+#define TOLERANCE_DISTANCE 1.7
+
+// robot angle directions
+#define ANGLE_UP 1.57
+#define ANGLE_DOWN -1.57
+#define ANGLE_RIGHT 0
+#define ANGLE_LEFT -3.14
+#define ANGLE_UP_LEFT 2.425
+#define ANGLE_UP_RIGHT 0.785
+#define ANGLE_DOWN_LEFT -2.356
+#define ANGLE_DOWN_RIGHT -0.785
+
 class Point {
 public:
 	unsigned int x; // Rows = Heights
@@ -47,8 +63,8 @@ class Location {
 
 public:
 	float x;
-    float y;
-    float yaw;
+	float y;
+	float yaw;
 
     Location(){
     		this->x = 0;
