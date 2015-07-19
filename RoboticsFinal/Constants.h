@@ -44,12 +44,12 @@ public:
 };
 
 class Location {
-private:
+
+public:
 	float x;
     float y;
     float yaw;
 
-public:
     Location(){
     		this->x = 0;
     		this->y = 0;

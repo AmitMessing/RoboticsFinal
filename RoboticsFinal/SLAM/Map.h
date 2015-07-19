@@ -25,6 +25,8 @@ public:
 	unsigned int GetPositionInMapVector(unsigned width, unsigned row, unsigned col);
 	void PrintMap();
 	vector<Point> GetAStartPath();
+	void SetMapValue(int x, int y, char value);
+	char GetMapValue(int row, int col);
 };
 
 #endif

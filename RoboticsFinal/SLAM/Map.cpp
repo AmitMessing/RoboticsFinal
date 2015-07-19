@@ -134,8 +134,6 @@ void Map::BlowMap(int blowFactor){
 		}
 
 	}
-
-
 }
 
 vector<Point> Map::GetAStartPath()
@@ -167,48 +165,16 @@ void Map::PrintMap(){
 	}
 }
 
+void Map::SetMapValue(int x, int y, char value){
+	int col = x / ConfigurationManager::GetGridRosolution();
+	int row = y / ConfigurationManager::GetGridRosolution();
 
-/*void Map::PrintMap()
-{
-	cout << "Printing Grid: " << endl;
-	cout << "--\t";
-	for (int j = 0; j < this->_gridWidth ; j++)
-	{
-		if (j % 5 == 0)
-		{
-			cout << "|";
-		}
-		else
-		{
-			cout << "-";
-		}
+if(this->_grid[row][col] != OCCUPIED_CELL){
+	this->_grid[row][col] = value;
 	}
-	cout << endl;
-	for (int i = 0; i < this->_gridHeight ; i++)
-	{
-		cout << i << "\t";
-		for (int j = 0; j < this->_gridWidth ; j++)
-		{
-			switch(this->_grid[i][j])
-			{
-			case FREE_CELL:
-				cout << " ";
-				break;
-			case OCCUPIED_CELL:
-				cout << "*";
-				break;
-			//case PATH_CELL:
-			//	cout << "o";
-			//	break;
-			//case START_CELL:
-			//	cout << "s";
-			//	break;
-			//case GOAL_CELL:
-			//	cout << "g";
-			//	break;
-			}
-		}
-		cout << endl;
-	}*/
-//}
+}
+
+char Map::GetMapValue(int row, int col){
+	return this->_grid[row][col];
+}
 

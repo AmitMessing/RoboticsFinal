@@ -10,7 +10,7 @@
 const char* ConfigurationManager::map_file_path = "/home/colman/Desktop/roboticLabMap.png";
 const double ConfigurationManager::MapResolutionCM = 2.5;
 const double ConfigurationManager:: Grid_ResolutionCM = 10;
-const Location ConfigurationManager::start_location = {362 , 305, 20};
+const Location ConfigurationManager::start_location = Location(362 , 305, 20);
 const Point ConfigurationManager::goal = Point(169, 138);
 const double ConfigurationManager::robot_size =  30.0;
 

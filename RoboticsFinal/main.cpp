@@ -21,7 +21,6 @@ int main()
 
 //	AvoidObstaclesPlan plan(&robot);
 	//Manager manager(&robot, &plan);
-//	ConvertMapBlackToWhiteAndWhiteToBlack("/home/colman/Desktop/roboticLabMap.png");
 	//manager.run();
 	return 0;
 }
