@@ -135,17 +135,22 @@ void Map::BlowMap(int blowFactor){
 
 	}
 
+
+}
+
+vector<Point> Map::GetAStartPath()
+{
 	PathPlanner pp = PathPlanner(this->_grid, this->_gridHeight, this->_gridWidth);
-	Point startLoc = Point(
-			ConfigurationManager::GetStartLocation().x,
-			ConfigurationManager::GetStartLocation().y);
-	vector<Point> path = pp.AStar(startLoc,ConfigurationManager::GetGoal());
+		Point startLoc = Point(
+				ConfigurationManager::GetStartLocation().x,
+				ConfigurationManager::GetStartLocation().y);
+		vector<Point> path = pp.AStar(startLoc,ConfigurationManager::GetGoal());
 
-	for (unsigned int index = 0; index < path.size(); index++){
-		this->_grid[path[index].y][path[index].x] = PATH_CELL;
-	}
+		for (unsigned int index = 0; index < path.size(); index++){
+			this->_grid[path[index].y][path[index].x] = PATH_CELL;
+		}
 
-	this->PrintMap();
+		this->PrintMap();
 }
 
 unsigned int Map::GetPositionInMapVector(unsigned width, unsigned row, unsigned col){

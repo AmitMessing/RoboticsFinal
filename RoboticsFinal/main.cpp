@@ -14,12 +14,14 @@ int main()
 	cout << "Started Running Robot" << endl;
 
 	Map map = Map();
+	vector<Point> path = map.GetAStartPath();
+
 //	Robot robot("localhost",6665);
 
 
 //	AvoidObstaclesPlan plan(&robot);
-//	Manager manager(&robot, &plan);
+	//Manager manager(&robot, &plan);
 //	ConvertMapBlackToWhiteAndWhiteToBlack("/home/colman/Desktop/roboticLabMap.png");
-//	manager.run();
+	//manager.run();
 	return 0;
 }

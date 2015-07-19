@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../Manager.cpp \
 ../PathPlanner.cpp \
 ../Robot.cpp \
+../WayPointsManager.cpp \
 ../main.cpp 
 
 OBJS += \
@@ -15,6 +16,7 @@ OBJS += \
 ./Manager.o \
 ./PathPlanner.o \
 ./Robot.o \
+./WayPointsManager.o \
 ./main.o 
 
 CPP_DEPS += \
@@ -22,6 +24,7 @@ CPP_DEPS += \
 ./Manager.d \
 ./PathPlanner.d \
 ./Robot.d \
+./WayPointsManager.d \
 ./main.d 
 
 

@@ -11,6 +11,18 @@ using namespace std;
 #define PATH_CELL '@'
 #define MAX_LASER_INDEX 665
 
+// robot movement directions
+#define MOVE_FORWARD 0
+#define UP 1
+#define DOWN 2
+#define RIGHT 3
+#define LEFT 4
+#define UP_LEFT 5
+#define UP_RIGHT 6
+#define DOWN_LEFT 7
+#define DOWN_RIGHT 8
+#define STOP 9
+
 class Point {
 public:
 	unsigned int x; // Rows = Heights
@@ -31,10 +43,25 @@ public:
 	}
 };
 
-struct Location {
+class Location {
+private:
 	float x;
-        float y;
-        float yaw;
+    float y;
+    float yaw;
+
+public:
+    Location(){
+    		this->x = 0;
+    		this->y = 0;
+    		this->yaw = 0;
+    	}
+
+    Location(float x, float y, float yaw){
+    		this->x = x;
+    		this->y = y;
+    		this->yaw = yaw;
+    	}
+
 
          void Print()
         {

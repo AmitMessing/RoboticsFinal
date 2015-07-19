@@ -1,3 +1,4 @@
+/*
 #ifndef MANAGER_H_
 #define MANAGER_H_
 #include "Plans/Plan.h"
@@ -11,13 +12,14 @@
 
 class Manager {
 	Robot* _robot;
-	Plan* _plan;
+	//Plan* _plan;
 	Behavior* _currBehavior;
 	LocalizationManager _localizationManager;
 public:
-	Manager(Robot* robot, Plan* plan);
+	Manager(Robot* robot//, Plan* plan);
 	virtual ~Manager();
 	void run();
 };
 
-#endif /* MANAGER_H_ */
+#endif  MANAGER_H_
+*/

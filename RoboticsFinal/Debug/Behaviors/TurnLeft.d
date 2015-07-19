@@ -16,7 +16,9 @@ Behaviors/TurnLeft.d: ../Behaviors/TurnLeft.cpp ../Behaviors/TurnLeft.h \
  ../Behaviors/../SLAM/Map.h \
  ../Behaviors/../SLAM/../ConfigurationManager.h \
  ../Behaviors/../SLAM/../Constants.h ../Behaviors/../SLAM/../Constants.h \
- ../Behaviors/../SLAM/../PathPlanner.h ../Behaviors/../Constants.h
+ ../Behaviors/../SLAM/../PathPlanner.h \
+ ../Behaviors/../SLAM/../ConfigurationManager.h \
+ ../Behaviors/../Constants.h
 
 ../Behaviors/TurnLeft.h:
 
@@ -59,5 +61,7 @@ Behaviors/TurnLeft.d: ../Behaviors/TurnLeft.cpp ../Behaviors/TurnLeft.h \
 ../Behaviors/../SLAM/../Constants.h:
 
 ../Behaviors/../SLAM/../PathPlanner.h:
+
+../Behaviors/../SLAM/../ConfigurationManager.h:
 
 ../Behaviors/../Constants.h:

@@ -24,6 +24,7 @@ public:
 	void BlowMap(int blowFactor);
 	unsigned int GetPositionInMapVector(unsigned width, unsigned row, unsigned col);
 	void PrintMap();
+	vector<Point> GetAStartPath();
 };
 
 #endif
