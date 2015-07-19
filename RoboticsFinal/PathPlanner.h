@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <climits>
 #include <cmath>
+#include "ConfigurationManager.h"
 
 using namespace std;
 
@@ -27,6 +28,7 @@ public:
 	vector<Point> reconstruct_path(Point** camefrom, Point goal);
 	queue<Point> getNeighbors(Point point);
 	bool checkObstacleAround(Point point);
+	bool vectorContainPoint(vector<Point> points, Point point);
 private:
 	int** _grid;
 	int _gridHeight, _gridWidth;

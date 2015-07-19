@@ -8,6 +8,7 @@ using namespace std;
 #define FREE_CELL ' '
 #define OCCUPIED_CELL '*'
 #define UNKNOWN_CELL '?'
+#define PATH_CELL '@'
 #define MAX_LASER_INDEX 665
 
 class Point {
@@ -25,23 +26,9 @@ public:
 		this->y = y;
 	}
 
-	bool operator==(const Point& rhs) const {
-		return ((this->x == rhs.x) && (this->y == rhs.y));
+	bool isEqual(const Point& point) const {
+		return ((this->x == point.x) && (this->y == point.y));
 	}
-
-	bool operator!=(const Point& rhs) const {
-		return (!(this->operator ==(rhs)));
-	}
-
-
-	bool operator<(const Point& rhs) const {
-		return ((this->x < rhs.x) || ((this->x == rhs.x) && (this->y < rhs.y)));
-	}
-
-  void Print()
-  {
-      cout << "X:" << this->x << " Y:" << this->y << endl;
-  }
 };
 
 struct Location {

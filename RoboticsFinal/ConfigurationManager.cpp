@@ -11,7 +11,7 @@ const char* ConfigurationManager::map_file_path = "/home/colman/Desktop/roboticL
 const double ConfigurationManager::MapResolutionCM = 2.5;
 const double ConfigurationManager:: Grid_ResolutionCM = 10;
 const Location ConfigurationManager::start_location = {362 , 305, 20};
-const Point ConfigurationManager::goal = {169, 138};
+const Point ConfigurationManager::goal = Point(169, 138);
 const double ConfigurationManager::robot_size =  30.0;
 
 ConfigurationManager::ConfigurationManager() {
@@ -30,7 +30,7 @@ const double ConfigurationManager::GetMapResolution() {
 }
 
 const double ConfigurationManager::GetGridRosolution() {
-	return Grid_ResolutionCM;
+	return Grid_ResolutionCM / MapResolutionCM;
 }
 
 const Location ConfigurationManager::GetStartLocation() {

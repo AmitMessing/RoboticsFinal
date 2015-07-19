@@ -18,6 +18,7 @@ Plans/AvoidObstaclesPlan.d: ../Plans/AvoidObstaclesPlan.cpp \
  ../Plans/../Behaviors/../SLAM/../ConfigurationManager.h \
  ../Plans/../Behaviors/../SLAM/../Constants.h \
  ../Plans/../Behaviors/../SLAM/../Constants.h \
+ ../Plans/../Behaviors/../SLAM/../PathPlanner.h \
  ../Plans/../Behaviors/../Constants.h ../Plans/../Behaviors/MoveForward.h \
  ../Plans/../Behaviors/Behavior.h ../Plans/../Behaviors/TurnLeft.h \
  ../Plans/../Behaviors/TurnRight.h
@@ -63,6 +64,8 @@ Plans/AvoidObstaclesPlan.d: ../Plans/AvoidObstaclesPlan.cpp \
 ../Plans/../Behaviors/../SLAM/../Constants.h:
 
 ../Plans/../Behaviors/../SLAM/../Constants.h:
+
+../Plans/../Behaviors/../SLAM/../PathPlanner.h:
 
 ../Plans/../Behaviors/../Constants.h:
 

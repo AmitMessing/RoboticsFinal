@@ -32,18 +32,23 @@ vector<Point> PathPlanner::AStar(Point start, Point goal){
 		f_score[index] = new double[this->_gridWidth];
 	}
 
-	camefrom[start.y][start.x] = start;
-	openset.push_back(start);
+    Point gridStart =  Point(start.x / ConfigurationManager::GetResolutionRatio(),
+    		                    start.y / ConfigurationManager::GetResolutionRatio());
+    Point gridGoal =  Point(goal.x / ConfigurationManager::GetResolutionRatio(),
+    	                    goal.y / ConfigurationManager::GetResolutionRatio());
 
-	g_score[start.y][start.x] = 0;
-	f_score[start.y][start.x] = g_score[start.y][start.x] + this->heuristic_cost_estimate(start,goal);
+	camefrom[gridStart.y][gridStart.x] = gridStart;
+	openset.push_back(gridStart);
+
+	g_score[gridStart.y][gridStart.x] = 0;
+	f_score[gridStart.y][gridStart.x] = g_score[gridStart.y][gridStart.x] + this->heuristic_cost_estimate(gridStart,gridGoal);
 
 	while(!openset.empty()){
 		int curIndex = getLowestScoreIndex(openset, f_score);
 		Point current = openset[curIndex];
 
-		if (current == goal){
-			path = this->reconstruct_path(camefrom, goal);
+		if (current.isEqual(gridGoal)){
+			path = this->reconstruct_path(camefrom, gridGoal);
 			break;
 		}
 
@@ -56,7 +61,7 @@ vector<Point> PathPlanner::AStar(Point start, Point goal){
 			Point neighbor = neighbors.front();
 			neighbors.pop();
 
-			if (std::find(closedset.begin(),closedset.end(), neighbor) != closedset.end()){
+			if (this->vectorContainPoint(closedset,neighbor)){
 				continue;
 			}
 
@@ -66,22 +71,30 @@ vector<Point> PathPlanner::AStar(Point start, Point goal){
 				tentative_g_score += INT_MAX;
 			}
 
-			if (std::find(openset.begin(),openset.end(), neighbor) == openset.end() ||
-				tentative_g_score < g_score[neighbor.y][neighbor.x])
+			if (!this->vectorContainPoint(openset,neighbor) ||
+				tentative_g_score < g_score[neighbor.y ][neighbor.x])
 			{
-				camefrom[neighbor.y][neighbor.x] = current;
-				g_score[neighbor.y][neighbor.x] = tentative_g_score;
-				f_score[neighbor.y][neighbor.x] = tentative_g_score + this->heuristic_cost_estimate(neighbor,goal);
 
-				if(std::find(openset.begin(),openset.end(), neighbor) == openset.end())
-				{
-					openset.push_back(neighbor);
-				}
+				camefrom[neighbor.y][neighbor.x] = current;
+
+				g_score[neighbor.y][neighbor.x] = tentative_g_score;
+				f_score[neighbor.y][neighbor.x] = tentative_g_score + this->heuristic_cost_estimate(neighbor,gridGoal);
+            //    Point newNeighbor = Point(neighbor.x, neighbor.y);
+				openset.push_back(neighbor);
 			}
 		}
 	}
 
 	return path;
+}
+
+bool PathPlanner::vectorContainPoint(vector<Point> points, Point point){
+	for (unsigned int index = 0; index < points.size(); index++){
+		if (points[index].isEqual(point)){
+			return true;
+		}
+	}
+	return false;
 }
 
 double PathPlanner::heuristic_cost_estimate(Point p1, Point p2){
@@ -113,7 +126,7 @@ vector<Point> PathPlanner::reconstruct_path(Point** camefrom, Point goal){
 	Point pointCamefrom = camefrom[current.y][current.x];
 	path.insert(path.begin(), current);
 
-	while(current != pointCamefrom){
+	while(!current.isEqual(pointCamefrom)){
 		path.insert(path.begin(), pointCamefrom);
 		current = pointCamefrom;
 		pointCamefrom = camefrom[current.y][current.x];
@@ -125,8 +138,8 @@ vector<Point> PathPlanner::reconstruct_path(Point** camefrom, Point goal){
 queue<Point> PathPlanner::getNeighbors(Point point)
 {
 	queue<Point> neighbors;
-	int row = point.y;
-	int col = point.x;
+	int col = point.y;
+	int row = point.x;
 
 	// left
 	if (col - 1 > 0)
@@ -179,7 +192,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	//down-left
 	if ((row + 1 < this->_gridHeight) && (col - 1 > 0))
 	{
-		if (this->_grid[row - 1][col - 1] == FREE_CELL)
+		if (this->_grid[row + 1][col - 1] == FREE_CELL)
 		{
 			neighbors.push(Point(row - 1,col - 1));
 		}
@@ -187,7 +200,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	//down-right
 	if ((row + 1 < this->_gridHeight) && (col + 1 < this->_gridWidth))
 	{
-		if (this->_grid[row - 1][col - 1] == FREE_CELL)
+		if (this->_grid[row + 1][col - 1] == FREE_CELL)
 		{
 			neighbors.push(Point(row - 1,col - 1));
 		}

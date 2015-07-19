@@ -15,6 +15,7 @@ private:
 	vector<unsigned char> _blowedMap;
 	unsigned _width, _height;
 	int _gridWidth,_gridHeight;
+	double _gridResolution;
 
 public:
 	Map();

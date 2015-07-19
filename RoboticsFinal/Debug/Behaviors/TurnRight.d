@@ -16,7 +16,7 @@ Behaviors/TurnRight.d: ../Behaviors/TurnRight.cpp \
  ../Behaviors/../SLAM/Map.h \
  ../Behaviors/../SLAM/../ConfigurationManager.h \
  ../Behaviors/../SLAM/../Constants.h ../Behaviors/../SLAM/../Constants.h \
- ../Behaviors/../Constants.h
+ ../Behaviors/../SLAM/../PathPlanner.h ../Behaviors/../Constants.h
 
 ../Behaviors/TurnRight.h:
 
@@ -57,5 +57,7 @@ Behaviors/TurnRight.d: ../Behaviors/TurnRight.cpp \
 ../Behaviors/../SLAM/../Constants.h:
 
 ../Behaviors/../SLAM/../Constants.h:
+
+../Behaviors/../SLAM/../PathPlanner.h:
 
 ../Behaviors/../Constants.h:

@@ -14,8 +14,9 @@ int main()
 	cout << "Started Running Robot" << endl;
 
 	Map map = Map();
-
 //	Robot robot("localhost",6665);
+
+
 //	AvoidObstaclesPlan plan(&robot);
 //	Manager manager(&robot, &plan);
 //	ConvertMapBlackToWhiteAndWhiteToBlack("/home/colman/Desktop/roboticLabMap.png");

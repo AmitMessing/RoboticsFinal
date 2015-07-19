@@ -12,9 +12,11 @@ Map::Map()
 	this->_height = 0;
 
 	this->LoadMap();
+	this->_gridResolution = ConfigurationManager::GetGridRosolution();
 
-	this->_gridHeight = (int)(this->_height * ConfigurationManager::GetGridRosolution());
-	this->_gridWidth = (int)(this->_width * ConfigurationManager::GetGridRosolution());
+	this->_gridHeight = (int)(this->_height / this->_gridResolution ) + 1;
+	this->_gridWidth = (int)(this->_width / this->_gridResolution ) + 1;
+
 
 	this->_grid = new int*[this->_gridHeight];
 
@@ -122,32 +124,16 @@ void Map::BlowMap(int blowFactor){
 	}
 	this->_blowedMap = blowedMap;
 
-	//lodepng::encode("/home/colman/Desktop/blowedMap.png", blowedMap, this->_width, this->_height);
-
+	lodepng::encode("/home/colman/Desktop/blowedMap.png", this->_blowedMap, this->_width, this->_height);
 
 	for (int row = 0; row < this->_height; row++){
 		for (int col = 0; col < this->_width; col++){
-			if (this->_blowedMap[this->GetPositionInMapVector(this->_width, row,col)] == 0){
-				this->_grid[row][col] = OCCUPIED_CELL;
+			if (this->_image[this->GetPositionInMapVector(this->_width,row,col)] == 0){
+				this->_grid[(int)(row / this->_gridResolution)][(int)(col / this->_gridResolution)] = OCCUPIED_CELL;
 			}
 		}
+
 	}
-	lodepng::encode("/home/colman/Desktop/blowedMap.png", this->_blowedMap, this->_width, this->_height);
-
-	vector<unsigned char> temp;
-
-	for (int row = 0; row < this->_gridHeight; row++){
-		for (int col = 0; col < this->_gridWidth; col++){
-			if (this->_grid[row][col] == OCCUPIED_CELL){
-				temp.push_back(0);
-			}
-			else{
-				temp.push_back(255);
-			}
-		}
-	}
-
-	lodepng::encode("/home/colman/Desktop/blowedMapFromGrid.png", temp, this->_gridWidth, this->_gridHeight);
 
 	PathPlanner pp = PathPlanner(this->_grid, this->_gridHeight, this->_gridWidth);
 	Point startLoc = Point(
@@ -156,31 +142,14 @@ void Map::BlowMap(int blowFactor){
 	vector<Point> path = pp.AStar(startLoc,ConfigurationManager::GetGoal());
 
 	for (unsigned int index = 0; index < path.size(); index++){
-		this->_grid[path[index].y][path[index].x] = 127;
+		this->_grid[path[index].y][path[index].x] = PATH_CELL;
 	}
 
-	vector<unsigned char> temp2;
-
-	for (int row = 0; row < this->_gridHeight; row++){
-		for (int col = 0; col < this->_gridWidth; col++){
-			if (this->_grid[row][col] == OCCUPIED_CELL){
-				temp2.push_back(0);
-			}
-			else if (this->_grid[row][col] == 127)
-			{
-				temp2.push_back(127);
-			}
-			else{
-				temp2.push_back(255);
-			}
-		}
-	}
-
-	lodepng::encode("/home/colman/Desktop/blowedMapFromGridWithPath.png", temp2, this->_gridWidth, this->_gridHeight);
+	this->PrintMap();
 }
 
 unsigned int Map::GetPositionInMapVector(unsigned width, unsigned row, unsigned col){
-	return (width * row * ConfigurationManager::GetResolutionRatio() + col * ConfigurationManager::GetResolutionRatio());
+	return ((width * row * ConfigurationManager::GetResolutionRatio()) + col * ConfigurationManager::GetResolutionRatio());
 }
 
 void Map::PrintMap(){
@@ -193,46 +162,48 @@ void Map::PrintMap(){
 	}
 }
 
-//void Map::PrintMap()
-//{
-//	cout << "Printing Grid: " << endl;
-//	cout << "--\t";
-//	for (int j = 0; j < this->_gridWidth ; j++)
-//	{
-//		if (j % 5 == 0)
-//		{
-//			cout << "|";
-//		}
-//		else
-//		{
-//			cout << "-";
-//		}
-//	}
-//	cout << endl;
-//	for (int i = 0; i < this->_gridHeight ; i++)
-//	{
-//		cout << i << "\t";
-//		for (int j = 0; j < this->_gridWidth ; j++)
-//		{
-//			switch(this->_grid[i][j])
-//			{
-//			case FREE_CELL:
-//				cout << " ";
-//				break;
-//			case OCCUPIED_CELL:
-//				cout << "*";
-//				break;
-////			case PATH_CELL:
-////				cout << "o";
-////				break;
-////			case START_CELL:
-////				cout << "s";
-////				break;
-////			case GOAL_CELL:
-////				cout << "g";
-////				break;
-//			}
-//		}
-//		cout << endl;
-//	}
+
+/*void Map::PrintMap()
+{
+	cout << "Printing Grid: " << endl;
+	cout << "--\t";
+	for (int j = 0; j < this->_gridWidth ; j++)
+	{
+		if (j % 5 == 0)
+		{
+			cout << "|";
+		}
+		else
+		{
+			cout << "-";
+		}
+	}
+	cout << endl;
+	for (int i = 0; i < this->_gridHeight ; i++)
+	{
+		cout << i << "\t";
+		for (int j = 0; j < this->_gridWidth ; j++)
+		{
+			switch(this->_grid[i][j])
+			{
+			case FREE_CELL:
+				cout << " ";
+				break;
+			case OCCUPIED_CELL:
+				cout << "*";
+				break;
+			//case PATH_CELL:
+			//	cout << "o";
+			//	break;
+			//case START_CELL:
+			//	cout << "s";
+			//	break;
+			//case GOAL_CELL:
+			//	cout << "g";
+			//	break;
+			}
+		}
+		cout << endl;
+	}*/
 //}
+

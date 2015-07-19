@@ -16,7 +16,7 @@ Behaviors/Behavior.d: ../Behaviors/Behavior.cpp ../Behaviors/Behavior.h \
  ../Behaviors/../SLAM/Map.h \
  ../Behaviors/../SLAM/../ConfigurationManager.h \
  ../Behaviors/../SLAM/../Constants.h ../Behaviors/../SLAM/../Constants.h \
- ../Behaviors/../Constants.h
+ ../Behaviors/../SLAM/../PathPlanner.h ../Behaviors/../Constants.h
 
 ../Behaviors/Behavior.h:
 
@@ -55,5 +55,7 @@ Behaviors/Behavior.d: ../Behaviors/Behavior.cpp ../Behaviors/Behavior.h \
 ../Behaviors/../SLAM/../Constants.h:
 
 ../Behaviors/../SLAM/../Constants.h:
+
+../Behaviors/../SLAM/../PathPlanner.h:
 
 ../Behaviors/../Constants.h:

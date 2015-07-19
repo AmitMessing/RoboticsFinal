@@ -17,6 +17,7 @@ Plans/Plan.d: ../Plans/Plan.cpp ../Plans/Plan.h \
  ../Plans/../Behaviors/../SLAM/../ConfigurationManager.h \
  ../Plans/../Behaviors/../SLAM/../Constants.h \
  ../Plans/../Behaviors/../SLAM/../Constants.h \
+ ../Plans/../Behaviors/../SLAM/../PathPlanner.h \
  ../Plans/../Behaviors/../Constants.h
 
 ../Plans/Plan.h:
@@ -58,5 +59,7 @@ Plans/Plan.d: ../Plans/Plan.cpp ../Plans/Plan.h \
 ../Plans/../Behaviors/../SLAM/../Constants.h:
 
 ../Plans/../Behaviors/../SLAM/../Constants.h:
+
+../Plans/../Behaviors/../SLAM/../PathPlanner.h:
 
 ../Plans/../Behaviors/../Constants.h:
