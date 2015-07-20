@@ -73,7 +73,6 @@ vector<Point> PathPlanner::AStar(Point start, Point goal){
 
 				g_score[neighbor.y][neighbor.x] = tentative_g_score;
 				f_score[neighbor.y][neighbor.x] = tentative_g_score + this->heuristic_cost_estimate(neighbor,gridGoal);
-            //    Point newNeighbor = Point(neighbor.x, neighbor.y);
 				openset.push_back(neighbor);
 			}
 		}

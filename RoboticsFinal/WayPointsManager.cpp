@@ -42,7 +42,8 @@ Location WayPointsManager::GetLocation(Point point)
 {
 	double temp = ((550 / (ConfigurationManager::GetGridRosolution() * ConfigurationManager::GetResolutionRatio()))/2);
 	double x =  (point.x / (ConfigurationManager::GetGridRosolution())) - temp;
-	double y =  (point.y / (ConfigurationManager::GetGridRosolution() * ConfigurationManager::GetResolutionRatio())) - temp;
+	double temp2 = ((380 / (ConfigurationManager::GetGridRosolution() * ConfigurationManager::GetResolutionRatio()))/2);
+	double y =  (point.y / (ConfigurationManager::GetGridRosolution() * ConfigurationManager::GetResolutionRatio())) - temp2;
 
 	return Location(x,y,0);
 }

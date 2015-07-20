@@ -27,8 +27,8 @@ void Manager::run()
     {
     	this->_robot->Read();
     	distance = this->CalcDistance(this->_robot->GetLocation(),next);
-    	Location l = this->_robot->GetLocation();
-    	cout << "x:" << l.x << ", y:" << l.y << ", yaw:"  << l.yaw << ", distance: " << distance << endl;
+    	Location robotLocation = this->_robot->GetLocation();
+    	cout << "x:" << robotLocation.x << ", y:" << robotLocation.y << ", yaw:"  << robotLocation.yaw << ", distance: " << distance << endl;
 
     	if (distance <= TOLERANCE_DISTANCE)
     	{
@@ -41,7 +41,7 @@ void Manager::run()
         		this->_robot->setSpeed(FORWARD_SPEED,0);
         		prevDistance = distance;
     	    	distance = this->CalcDistance(this->_robot->GetLocation(),next);
-    	    	cout << "x:" << l.x << ", y:" << l.y << ", yaw:"  << l.yaw << ", distance: " << distance << endl;
+    	    	cout << "x:" << robotLocation.x << ", y:" << robotLocation.y << ", yaw:"  << robotLocation.yaw << ", distance: " << distance << endl;
     		}
 
     		this->_robot->setSpeed(0,0);
