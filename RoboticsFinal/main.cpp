@@ -19,7 +19,6 @@ int main()
 	vector<Location> waypoints = waypointManager.GetWayPoints(&path);
 
 	Robot robot("localhost",6665);
-//	AvoidObstaclesPlan plan(&robot);
 	Manager manager(&robot, waypoints);
 	manager.run();
 	return 0;

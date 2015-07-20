@@ -24,10 +24,9 @@ using namespace std;
 #define STOP 9
 
 // movement
-#define ROTATION_SPEED 0.02
 #define FORWARD_SPEED_SLOW 0.2
 #define FORWARD_SPEED 0.4
-#define TOLERANCE_DISTANCE 1.7
+#define TOLERANCE_DISTANCE 1.75
 
 // robot angle directions
 #define ANGLE_UP 1.57
@@ -108,21 +107,6 @@ public:
                yaw = a.yaw;
            }
 
-};
-
-namespace GridCellState {
-enum CellState {
-	FREE,
-	OBSTACLE,
-	A_STAR_PATH,
-	WAY_POINT,
-	BLOWED
-};
-}
-
-struct GridCell {
-	GridCellState::CellState cell_state : 3;
-	unsigned int cell_cost : 5;
 };
 
 #endif /* CONSTANTS_H_ */

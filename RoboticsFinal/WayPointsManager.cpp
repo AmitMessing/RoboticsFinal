@@ -10,41 +10,39 @@ using namespace std;
 WayPointsManager::WayPointsManager() {
 	this->_currPoint = 0;
 	this->_prevDirection = MOVE_FORWARD;
-
 }
 
 WayPointsManager::~WayPointsManager() {
-	// TODO Auto-generated destructor stub
+
 }
 
 vector<Location> WayPointsManager::GetWayPoints(vector<Point>* path){
-
 	this->_path = path[0];
 	vector<Location> result;
 
 	int direction = GetNextDirection();
 
-		while(direction != STOP)
+	while(direction != STOP)
+	{
+		if (direction != MOVE_FORWARD)
 		{
-			if (direction != MOVE_FORWARD)
-			{
-				Point p = this->_path[this->_currPoint - 1];
-				result.push_back(this->GetRealLocation(p));
-			}
-
-			direction = GetNextDirection();
+			Point p = this->_path[this->_currPoint - 1];
+			result.push_back(this->GetLocation(p));
 		}
 
-		result.push_back(this->GetRealLocation(this->_path[this->_currPoint - 1]));
+		direction = GetNextDirection();
+	}
 
-		return result;
+	result.push_back(this->GetLocation(this->_path[this->_currPoint - 1]));
+
+	return result;
 }
 
-Location WayPointsManager::GetRealLocation(Point point)
+Location WayPointsManager::GetLocation(Point point)
 {
-	double gridResolution = ConfigurationManager::GetGridRosolution();
-	double y = point.y / gridResolution + 100 * gridResolution / 2;
-	double x = point.x / gridResolution + 100 * gridResolution / 2;
+	double temp = ((550 / (ConfigurationManager::GetGridRosolution() * ConfigurationManager::GetResolutionRatio()))/2);
+	double x =  (point.x / (ConfigurationManager::GetGridRosolution())) - temp;
+	double y =  (point.y / (ConfigurationManager::GetGridRosolution() * ConfigurationManager::GetResolutionRatio())) - temp;
 
 	return Location(x,y,0);
 }

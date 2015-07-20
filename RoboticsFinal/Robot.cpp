@@ -16,7 +16,6 @@ void Robot::Read()
 void Robot::setSpeed(double forwardSpeed, double rotationSpeed)
 {
 	_pp.SetSpeed(forwardSpeed,rotationSpeed);
-	_pp.SetMotorEnable(true);
 }
 
 double Robot::getXPos()
@@ -35,7 +34,7 @@ double Robot::getYaw()
 }
 
 Location Robot::GetLocation(){
-	return Location(_pp.GetXPos(), _pp.GetYPos(), _pp.GetYaw());
+	return Location(_pp.GetXPos(), _pp.GetYPos(), _pp.GetYaw() * 180 / M_PI);
 }
 
 Robot::~Robot()

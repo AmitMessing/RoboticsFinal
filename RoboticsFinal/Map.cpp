@@ -12,7 +12,7 @@ Map::Map()
 	this->_height = 0;
 
 	this->LoadMap();
-	this->_gridResolution = ConfigurationManager::GetGridRosolution();
+	this->_gridResolution = ConfigurationManager::GetResolutionRatio();
 
 	this->_gridHeight = (int)(this->_height / this->_gridResolution ) + 1;
 	this->_gridWidth = (int)(this->_width / this->_gridResolution ) + 1;
@@ -128,11 +128,10 @@ void Map::BlowMap(int blowFactor){
 
 	for (int row = 0; row < this->_height; row++){
 		for (int col = 0; col < this->_width; col++){
-			if (this->_image[this->GetPositionInMapVector(this->_width,row,col)] == 0){
+			if (this->_blowedMap[this->GetPositionInMapVector(this->_width,row,col)] == 0){
 				this->_grid[(int)(row / this->_gridResolution)][(int)(col / this->_gridResolution)] = OCCUPIED_CELL;
 			}
 		}
-
 	}
 }
 
@@ -170,12 +169,11 @@ void Map::SetMapValue(int x, int y, char value){
 	int col = x / ConfigurationManager::GetGridRosolution();
 	int row = y / ConfigurationManager::GetGridRosolution();
 
-if(this->_grid[row][col] != OCCUPIED_CELL){
-	this->_grid[row][col] = value;
+	if(this->_grid[row][col] != OCCUPIED_CELL){
+		this->_grid[row][col] = value;
 	}
 }
 
 char Map::GetMapValue(int row, int col){
 	return this->_grid[row][col];
 }
-

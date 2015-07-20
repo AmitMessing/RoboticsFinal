@@ -22,15 +22,13 @@ void Manager::run()
 
     ChangeDirection(prev,next,true);
 
-    cout << "-----------------------------------" << endl << endl;
-
     double distance, prevDistance;
     while (wayIndex < this->_wayPoints.size())
     {
     	this->_robot->Read();
     	distance = this->CalcDistance(this->_robot->GetLocation(),next);
     	Location l = this->_robot->GetLocation();
-    	cout << "( " << l.x << " , " << l.y << ")\t"  << l.yaw << "\t| " << distance << endl;
+    	cout << "x:" << l.x << ", y:" << l.y << ", yaw:"  << l.yaw << ", distance: " << distance << endl;
 
     	if (distance <= TOLERANCE_DISTANCE)
     	{
@@ -43,7 +41,7 @@ void Manager::run()
         		this->_robot->setSpeed(FORWARD_SPEED,0);
         		prevDistance = distance;
     	    	distance = this->CalcDistance(this->_robot->GetLocation(),next);
-    	    	cout << "\t( " << l.x << " , " << l.y << ")\t"  << l.yaw << "\t| " << distance << endl;
+    	    	cout << "x:" << l.x << ", y:" << l.y << ", yaw:"  << l.yaw << ", distance: " << distance << endl;
     		}
 
     		this->_robot->setSpeed(0,0);
@@ -57,7 +55,7 @@ void Manager::run()
     	}
     }
 
-    cout << "Goal point reached successfully" << endl;
+    cout << "you have reached your destination!" << endl;
 }
 
 double Manager::CalcDistance(Location prev, Location next){
@@ -85,7 +83,7 @@ int Manager::CalcNextStep(Location prev, Location next)
 {
 	int direction;
 
-	// up
+	// down
 	if (next.y > prev.y)
 	{
 		if (next.x > prev.x)
@@ -101,7 +99,7 @@ int Manager::CalcNextStep(Location prev, Location next)
 			direction = DOWN;
 		}
 	}
-	// down
+	// up
 	else if (next.y < prev.y)
 	{
 		if (next.x > prev.x)

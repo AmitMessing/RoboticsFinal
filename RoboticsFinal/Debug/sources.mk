@@ -25,5 +25,4 @@ C_UPPER_DEPS :=
 SUBDIRS := \
 . \
 Png \
-Behaviors \
 

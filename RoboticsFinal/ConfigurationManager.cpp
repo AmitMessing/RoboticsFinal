@@ -30,7 +30,7 @@ const double ConfigurationManager::GetMapResolution() {
 }
 
 const double ConfigurationManager::GetGridRosolution() {
-	return Grid_ResolutionCM / MapResolutionCM;
+	return Grid_ResolutionCM;
 }
 
 const Location ConfigurationManager::GetStartLocation() {
@@ -46,7 +46,7 @@ const double ConfigurationManager::GetRobotSize() {
 }
 
 const int ConfigurationManager::GetBlowFactor() {
-	return (robot_size/2) + 1;
+	return ((robot_size/2)/MapResolutionCM) + 1;
 }
 
 const int ConfigurationManager::GetResolutionRatio(){

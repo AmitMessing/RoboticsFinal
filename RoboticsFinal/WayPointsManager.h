@@ -18,7 +18,7 @@ private:
 	unsigned _currPoint;
 	int _prevDirection;
 	int GetNextDirection();
-	Location GetRealLocation(Point point);
+	Location GetLocation(Point point);
 };
 
 #endif /* WAYPOINTSMANAGER_H_ */

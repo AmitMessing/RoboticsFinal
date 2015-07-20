@@ -132,15 +132,15 @@ vector<Point> PathPlanner::reconstruct_path(Point** camefrom, Point goal){
 queue<Point> PathPlanner::getNeighbors(Point point)
 {
 	queue<Point> neighbors;
-	int col = point.y;
-	int row = point.x;
+	int col = point.x;
+	int row = point.y;
 
 	// left
 	if (col - 1 > 0)
 	{
 		if (this->_grid[row][col - 1] == FREE_CELL)
 		{
-			neighbors.push(Point(row,col - 1));
+			neighbors.push(Point(col - 1,row));
 		}
 	}
 	//right
@@ -148,7 +148,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	{
 		if (this->_grid[row][col + 1] == FREE_CELL)
 		{
-			neighbors.push(Point(row,col + 1));
+			neighbors.push(Point(col + 1,row));
 		}
 	}
 	//up
@@ -156,7 +156,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	{
 		if (this->_grid[row - 1][col] == FREE_CELL)
 		{
-			neighbors.push(Point(row - 1,col));
+			neighbors.push(Point(col,row - 1));
 		}
 	}
 	//down
@@ -164,7 +164,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	{
 		if (this->_grid[row + 1][col] == FREE_CELL)
 		{
-			neighbors.push(Point(row + 1,col));
+			neighbors.push(Point(col,row + 1));
 		}
 	}
 	//up-left
@@ -172,7 +172,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	{
 		if (this->_grid[row - 1][col - 1] == FREE_CELL)
 		{
-			neighbors.push(Point(row - 1,col - 1));
+			neighbors.push(Point(col - 1,row - 1));
 		}
 	}
 	//up-right
@@ -180,7 +180,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	{
 		if (this->_grid[row - 1][col - 1] == FREE_CELL)
 		{
-			neighbors.push(Point(row - 1,col - 1));
+			neighbors.push(Point(col - 1,row - 1));
 		}
 	}
 	//down-left
@@ -188,7 +188,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	{
 		if (this->_grid[row + 1][col - 1] == FREE_CELL)
 		{
-			neighbors.push(Point(row - 1,col - 1));
+			neighbors.push(Point(col - 1,row - 1));
 		}
 	}
 	//down-right
@@ -196,7 +196,7 @@ queue<Point> PathPlanner::getNeighbors(Point point)
 	{
 		if (this->_grid[row + 1][col - 1] == FREE_CELL)
 		{
-			neighbors.push(Point(row - 1,col - 1));
+			neighbors.push(Point(col - 1,row - 1));
 		}
 	}
 
